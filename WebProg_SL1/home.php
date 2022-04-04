@@ -1,3 +1,14 @@
+<?php
+    include("config.php");
+    if(isset($_GET['id'])){
+        $nik = $_GET['id'];
+        $str_query = "select * from users where NIK = '".$nik."'";
+        $query = mysqli_query($connection, $str_query);
+        $data = mysqli_fetch_array($query);
+        // var_dump($data);
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,14 +25,15 @@
             <div class="home">
                <b>Home</b> 
             </div>
-            <a href="profile.php">Profile</a>
+            <a href="profile.php?id=<?php echo $data['NIK'] ?> ">Profile</a>
         </div>
+        
         <div class="logout">
             <a href="logout.php">Logout</a>
         </div>
     </div>
     <div class="body">
-        Halo <b><?php session_start(); echo $_SESSION['namaDepanSession']." ".$_SESSION['namaTengahSession']." ".$_SESSION['namaBelakangSession'] ?></b>, Selamat datang di Aplikasi Pengelolaan Keuangan :)
+        Halo <b><?php echo $data['nama_depan']." ".$data['nama_tengah']." ".$data['nama_belakang'] ?></b>, Selamat datang di Aplikasi Pengelolaan Keuangan :)
     </div>
 </body>
 </html>

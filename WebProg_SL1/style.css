@@ -193,3 +193,14 @@
     height: 90vh;
 }
 
+/* editProfile */
+#updateBtn{
+    background-color: #adf59f;
+    width: 150px;
+    height: 35px;
+    font-size: 25px;
+    border-radius: 10px;
+    border-style: none;
+    cursor: pointer;
+}
+
